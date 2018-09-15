@@ -6,7 +6,7 @@ output: github_document
 
 ```{r packages}
 library(tidyverse)
-
+library(ggplot2)
 ```
 
 
@@ -73,7 +73,7 @@ as.numeric(as.character(factor_vector))
 #Problem 2
 
 
-
+##Create Data Frame
 ```{r, create data frame}
 
 set.seed(1)
@@ -87,6 +87,40 @@ plot_df = tibble(
 )
 
 ```
+
+
+
+There are `r ncol(plot_df)` columns and `r nrow(plot_df)` rows.  
+The mean of x is `r mean(plot_df$x)` and the median of x is `r median(plot_df$x)`  
+The proportion of cases for which x_plus_y_larger_zero is TRUE is `r sum(plot_df$x_plus_y_larger_zero)/length(plot_df$x_plus_y_larger_zero)`
+
+
+
+
+##Scatter Plots
+
+I get the same result when I color by a factor and by a logical vector. When I color by a numerical vector the only difference I see is that the legend shows a gradient of color going from 0 to 1 because the numbers in the vectors range from 0 to 1 since FALSE gets 0 and TRUE gets 1
+
+```{r}
+ggplot(plot_df, aes(x = x, y = y, color = x_plus_y_larger_zero)) + labs(title = "Colored by Logical Vector") + geom_point()
+
+
+ggplot(plot_df, aes(x = x, y = y, color = x_plus_y_larger_zero_numeric )) + labs(title = "Colored by Numeric Vector") + geom_point()
+
+
+ggplot(plot_df, aes(x = x, y = y, color = x_plus_y_larger_zero_factor )) + labs(title = "Colored by Factor Vector") + geom_point()
+
+
+
+
+
+```
+
+
+
+
+
+
 
 
 
