@@ -1,15 +1,44 @@
 ---
 title: "P8105 Homework 1"
 author: "Alina Levine"
-output: html_document
+output: github_document
 ---
 
+# Problem 1
 
-I am creating a random sample of size 10 from the uniform distribution
+
+I am creating a random sample of size 10 from the uniform distribution and will make 
+a logical vector indicating which elements are greater than 2
 
 ```{r random uniform sample}
 
 uniform_sample_vector = runif(10, 0, 5)
 
+greater_than_two = uniform_sample_vector > 2
+
 ```
+
+I am creating a numerical vector and a character vector of size 10
+
+```{r}
+numeric_vector = 1:10
+
+character_vector = rep("a", 10)
+
+```
+
+When I take the mean of these vectors, I get a number back for the 
+logical and numeric vctors, but not the character vector. This is because
+mean() treats the logical vector as numeric, giving TRUE a value of 1
+and FALSE a value of 0, but it does not do this with character vectors
+
+```{r}
+mean(uniform_sample_vector)
+mean(greater_than_two)
+mean(numeric_vector)
+mean(character_vector)
+
+```
+
+
 
