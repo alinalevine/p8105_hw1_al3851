@@ -50,9 +50,15 @@ as.numeric(character_vector)
 
 ```
 
-When I convert my character vector to 
+When I convert my character vector to a factor and then to numeric I get a numeric vector 1:10
+because the character vector had 10 unique entries, so there were 10 levels. When I convert my 
+factor vector to a character vector to a numeric vector I get NAs because character vectors 
+cannot be converted to numeric vectors
 
-```{r}
+```{r converting between three vector types, results = hide}
+
+as.numeric(as.factor(character_vector))
+as.numeric(as.character(factor_vector))
 
 
 ```
