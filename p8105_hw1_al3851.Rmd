@@ -63,6 +63,30 @@ as.numeric(as.character(factor_vector))
 
 ```
 
+#Problem 2
+
+
+
+```{r, create data frame}
+
+set.seed(1)
+
+plot_df = tibble(
+  x = rnorm(1000),
+  y = rnorm(1000),
+  x_plus_y_larger_zero = (x + y) > 0,
+  x_plus_y_larger_zero_numeric = as.numeric(x_plus_y_larger_zero),
+  x_plus_y_larger_zero_factor = as.factor(x_plus_y_larger_zero)
+)
+
+```
+
+The size of the data set is `r dim(plot_df)`. 
+The mean of x is `r mean(plot_df$x)' and the median of x is `r median(plot_df$x)'.
+The proportion of cases for which x_plus_y_larger_zero is TRUE is `r sum(plot_df$x_plus_y_larger_zero)/length(plot_df$x_plus_y_larger_zero)`
+
+
+
 
 
 
