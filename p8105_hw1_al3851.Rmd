@@ -21,9 +21,9 @@ greater_than_two = uniform_sample_vector > 2
 I am creating a numerical vector and a character vector of size 10
 
 ```{r}
-numeric_vector = 1:10
+factor_vector = as.factor(c("a", "a", "a", "a", "a", "a", "b", "b", "b", "b"))
 
-character_vector = rep("a", 10)
+character_vector = c("a", "b", "c", "d", "e", "f", "g", "h", "i", "j")
 
 ```
 
