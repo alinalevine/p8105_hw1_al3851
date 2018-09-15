@@ -4,9 +4,16 @@ author: "Alina Levine"
 output: github_document
 ---
 
+```{r packages}
+library(tidyverse)
+
+```
+
+
+
 # Problem 1
 
-
+## Create Vectors
 I am creating a random sample of size 10 from the uniform distribution and will make 
 a logical vector indicating which elements are greater than 2. I will also create a factor vector
 and character vector
@@ -22,13 +29,13 @@ factor_vector = as.factor(c("a", "a", "a", "a", "a", "a", "b", "b", "b", "b"))
 character_vector = c("a", "b", "c", "d", "e", "f", "g", "h", "i", "j")
 
 ```
-
+##Mean of Vectors
 When I take the mean of these vectors, I get a number back for the 
 logical and numeric vctors, but I get NA for the factor and character vectors. This is because
 mean() treats the logical vector as numeric, giving TRUE a value of 1
 and FALSE a value of 0, but it does not do this with character vectors
 
-```{r take means}
+```{r take means, results = "hide", message = FALSE}
 mean(uniform_sample_vector)
 mean(greater_than_two)
 mean(factor_vector)
@@ -36,12 +43,12 @@ mean(character_vector)
 
 ```
 
-
+## Converting to Numeric
 When I apply as.numeric to the logical vector, I get a vector of 1s and 0s return
 When I apply as.numeric to the factor vector, I get a vector of 1 and 2, each number
 corresponding to a level. I get NAs when I apply as.numeric to a character vector
 
-```{r convert to numeric, results = hide}
+```{r convert to numeric, results= "hide"}
 
 as.numeric(greater_than_two)
 as.numeric(factor_vector)
@@ -55,7 +62,7 @@ because the character vector had 10 unique entries, so there were 10 levels. Whe
 factor vector to a character vector to a numeric vector I get NAs because character vectors 
 cannot be converted to numeric vectors
 
-```{r converting between three vector types, results = hide}
+```{r converting between three vector types, results = "hide"}
 
 as.numeric(as.factor(character_vector))
 as.numeric(as.character(factor_vector))
@@ -80,12 +87,6 @@ plot_df = tibble(
 )
 
 ```
-
-The size of the data set is `r dim(plot_df)`. 
-The mean of x is `r mean(plot_df$x)' and the median of x is `r median(plot_df$x)'.
-The proportion of cases for which x_plus_y_larger_zero is TRUE is `r sum(plot_df$x_plus_y_larger_zero)/length(plot_df$x_plus_y_larger_zero)`
-
-
 
 
 
