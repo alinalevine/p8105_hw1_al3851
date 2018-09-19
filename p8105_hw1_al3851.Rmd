@@ -94,10 +94,12 @@ The proportion of cases for which x_plus_y_larger_zero is TRUE is `r sum(plot_df
 
 ##Scatter Plots
 
-I get the same result when I color by a factor and by a logical vector. When I color by a numerical vector the only difference I see is that the legend shows a gradient of color going from 0 to 1 because the numbers in the vectors range from 0 to 1 since FALSE gets 0 and TRUE gets 1. for all of these plots, the coordinates where (x+y)>2 are one color and those for whih (x+y)<= 2 are another color. 
+I get the same result when I color by a factor and by a logical vector. When I color by a numerical vector the legend shows a gradient of color going from 0 to 1 because the numbers in the vectors range from 0 to 1 since FALSE gets 0 and TRUE gets 1. for all of these plots, the coordinates where (x+y)>2 are one color and those for whih (x+y)<= 2 are another color. Additionally, the numeric vector plot colors are different than the colors for logical and factor. Otherwise, the plots all look the same. 
 
 ```{r}
 ggplot(plot_df, aes(x = x, y = y, color = x_plus_y_larger_zero)) + labs(title = "Colored by Logical Vector") + geom_point()
+
+ggsave("plot_colored_by_logical.png")
 
 
 ggplot(plot_df, aes(x = x, y = y, color = x_plus_y_larger_zero_numeric )) + labs(title = "Colored by Numeric Vector") + geom_point()
