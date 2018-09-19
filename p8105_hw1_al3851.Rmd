@@ -13,40 +13,35 @@ library(ggplot2)
 
 # Problem 1
 
-## Create Vectors
-I am creating a random sample of size 10 from the uniform distribution and will make 
-a logical vector indicating which elements are greater than 2. I will also create a factor vector
-and character vector
+## Create Dataframe
+I am creating a dataframe with 4 vectors. One vector is a random sample of size 10 from the uniform distribution. I will make a logical vector indicating which elements are greater than 2. I will also create a factor vector and a character vector.
 
-```{r create 4 types of vectors}
-
-uniform_sample_vector = runif(10, 0, 5)
-
-greater_than_two = uniform_sample_vector > 2
-
-factor_vector = as.factor(c("a", "a", "a", "a", "a", "a", "b", "b", "b", "b"))
-
-character_vector = c("a", "b", "c", "d", "e", "f", "g", "h", "i", "j")
+```{r creat dataframe}
+first_problem_df = tibble(
+  uniform_sample_vector = runif(10, 0, 5),
+  greater_than_two = uniform_sample_vector > 2,
+  factor_vector = as.factor(c("a", "a", "a", "a", "a", "a", "b", "b", "b", "b")),
+  character_vector = c("a", "b", "c", "d", "e", "f", "g", "h", "i", "j")
+)
 
 ```
 ##Mean of Vectors
 When I take the mean of these vectors, I get a number back for the 
-logical and numeric vctors, but I get NA for the factor and character vectors. This is because
-mean() treats the logical vector as numeric, giving TRUE a value of 1
-and FALSE a value of 0, but it does not do this with character vectors
+logical and numeric vectors, but I get a warning that NAs are being returned for the factor and character vectors. This is because mean() treats the logical vector as numeric, giving TRUE a value of 1
+and FALSE a value of 0, but it does not do this with character or factor vectors.
 
 ```{r take means, results = "hide", message = FALSE}
-mean(uniform_sample_vector)
-mean(greater_than_two)
-mean(factor_vector)
-mean(character_vector)
+mean(first_problem_df$uniform_sample_vector)
+mean(first_problem_df$greater_than_two)
+mean(first_problem_df$factor_vector)
+mean(first_problem_df$character_vector)
 
 ```
 
 ## Converting to Numeric
-When I apply as.numeric to the logical vector, I get a vector of 1s and 0s return
+When I apply as.numeric to the logical vector, I get a vector of 1s and 0s returned
 When I apply as.numeric to the factor vector, I get a vector of 1 and 2, each number
-corresponding to a level. I get NAs when I apply as.numeric to a character vector
+corresponding to a level. I get NAs when I apply as.numeric to a character vector.
 
 ```{r convert to numeric, results= "hide"}
 
@@ -58,11 +53,11 @@ as.numeric(character_vector)
 ```
 
 When I convert my character vector to a factor and then to numeric I get a numeric vector 1:10
-because the character vector had 10 unique entries, so there were 10 levels. When I convert my 
+because the character vector had 10 unique entries, so there were 10 levels and each number corresponds to a level. When I convert my 
 factor vector to a character vector to a numeric vector I get NAs because character vectors 
 cannot be converted to numeric vectors
 
-```{r converting between three vector types, results = "hide"}
+```{r converting between three vector types}
 
 as.numeric(as.factor(character_vector))
 as.numeric(as.character(factor_vector))
@@ -99,7 +94,7 @@ The proportion of cases for which x_plus_y_larger_zero is TRUE is `r sum(plot_df
 
 ##Scatter Plots
 
-I get the same result when I color by a factor and by a logical vector. When I color by a numerical vector the only difference I see is that the legend shows a gradient of color going from 0 to 1 because the numbers in the vectors range from 0 to 1 since FALSE gets 0 and TRUE gets 1
+I get the same result when I color by a factor and by a logical vector. When I color by a numerical vector the only difference I see is that the legend shows a gradient of color going from 0 to 1 because the numbers in the vectors range from 0 to 1 since FALSE gets 0 and TRUE gets 1. for all of these plots, the coordinates where (x+y)>2 are one color and those for whih (x+y)<= 2 are another color. 
 
 ```{r}
 ggplot(plot_df, aes(x = x, y = y, color = x_plus_y_larger_zero)) + labs(title = "Colored by Logical Vector") + geom_point()
