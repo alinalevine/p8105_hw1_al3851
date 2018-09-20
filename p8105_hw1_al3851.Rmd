@@ -44,10 +44,9 @@ When I apply as.numeric to the factor vector, I get a vector of 1 and 2, each nu
 corresponding to a level. I get NAs when I apply as.numeric to a character vector.
 
 ```{r convert to numeric, results= "hide"}
-
-as.numeric(greater_than_two)
-as.numeric(factor_vector)
-as.numeric(character_vector)
+as.numeric(first_problem_df$greater_than_two)
+as.numeric(first_problem_df$factor_vector)
+as.numeric(first_problem_df$character_vector)
 
 
 ```
@@ -59,8 +58,8 @@ cannot be converted to numeric vectors
 
 ```{r converting between three vector types}
 
-as.numeric(as.factor(character_vector))
-as.numeric(as.character(factor_vector))
+as.numeric(as.factor(first_problem_df$character_vector))
+as.numeric(as.character(first_problem_df$factor_vector))
 
 
 ```
