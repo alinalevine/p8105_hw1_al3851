@@ -4,7 +4,7 @@ author: "Alina Levine"
 output: github_document
 ---
 
-```{r packages}
+```{r packages, results="hide"}
 library(tidyverse)
 library(ggplot2)
 ```
